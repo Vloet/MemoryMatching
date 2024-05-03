@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>MemoryMatching</title>
+    
+  <style>
+        * {
+            font-family: Arial; /* 設定全 HTML 字體為 Arial */
+        }
+    header, footer {
+            background-color: #666666; /* 設定 header 和 footer 的背景顏色 */
+            color: #FFFFFF; /* 設定 header 和 footer 的文字顏色 */
+            text-align: center; /* 文字居中對齊 */
+            padding: 10px; /* 內邊距設定 */
+        }
+
+        main {
+            padding: 10px 0; /* 上下留白 */
+        }
+
+        .grid-container {
+            display: grid; /* 設定為網格布局 */
+            grid-template-columns: repeat(3, 1fr); /* 創建三列等寬布局，容器寬度變化時自動調整 */
+            grid-gap: 10px; /* 卡片之間的間隙 */
+            width: 260px; /* 網格的總寬度 */
+            margin: auto; /* 將網格置於頁面中央 */
+        }
+
+        .grid-item {
+            display: grid; /* 設定為網格布局 */
+            width: 80px; /* 每個網格項目的固定寬度 */
+            height: 80px; /* 每個網格項目的固定高度 */
+            justify-content: center; /* 水平居中對齊 */
+            align-items: center; /* 垂直居中對齊 */
+            background-color: #F0F0F0; /* 灰色背景 */
+            cursor: pointer; /* 指示元素可點擊 */
+        }
+ </style>
+    </head>
+
+<body>
+
+<header>
+    <h1>MemoryMatching</h1>
+</header>
+  <main>
+    <div class="grid-container">
+        <div id="grid1" class="grid-item"></div>
+        <div id="grid2" class="grid-item"></div>
+        <div id="grid3" class="grid-item"></div>
+        <div id="grid4" class="grid-item"></div>
+        <div id="grid5" class="grid-item"></div>
+        <div id="grid6" class="grid-item"></div>
+        <div id="grid7" class="grid-item"></div>
+        <div id="grid8" class="grid-item"></div>
+        <div id="grid9" class="grid-item"></div>
+        <div id="grid10" class="grid-item"></div>
+        <div id="grid11" class="grid-item"></div>
+        <div id="grid12" class="grid-item"></div>
+        <div id="grid13" class="grid-item"></div>
+        <div id="grid14" class="grid-item"></div>
+        <div id="grid15" class="grid-item"></div>
+        <div id="grid16" class="grid-item"></div>
+    </div>
+</main>
+  <footer>
+    <div id="debugText">cooooool</div> <!-- 頁腳信息 -->
+</footer>
+</body>
+</html>

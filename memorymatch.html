@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>動態可點擊網格</title>
+<style>
+    * {
+        font-family: Arial;
+    }
+    header, footer {
+        background-color: #666666;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 10px;
+    }
+    main {
+        padding: 10px 0;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        width: 240px;
+        margin: auto;
+    }
+    .grid-item {
+        display: grid;
+        width: 80px;
+        height: 80px;
+        justify-content: center;
+        align-items: center;
+        background-color: #F0F0F0;
+        cursor: pointer;
+        font-size: 60px;
+        text-indent:10000px;
+        overflow:hidden;
+    }
+    .showcard {
+        text-indent:0px;
+    }
+    .button {
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s; 
+    }
+
+    .button1 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #04AA6D;
+    }
+
+    .button1:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+<header>
+    <h1>動態可點擊網格</h1>
+</header>
+
+<main>
+    <div class="grid-container" id="grid-container"></div>
+    <center><button id="button1" class="button button1">restart</button></center>
+</main>
+
+<footer>
+    <p id="CV" />
+</footer>
+
+<script>
+
+const emoji=["😽","🦊","🙉","🦆","🐻","🐹","🦉","🐴"]
+const card=[...emoji,...emoji];
+card.sort(()=>0.5-Math.random());
+var clickedcard = "";
+var matchedpair =0;
+
+function toggleGridSelection(event) {
+    var grid = event.target; 
+    
+    if(grid.classList.contains("showcard")) {return;}
+    
+    grid.classList.add("showcard");
+    if (clickedcard == "") {
+        clickedcard = grid;
+    } else if(grid.textContent == clickedcard.textContent){
+        matchedpair=matchedpair+1;
+        clickedcard=""
+        if (matchedpair == 8) {
+            document.getElementById("CV").textContent = "YEAH";
+        }
+    } else if (grid.textContent != clickedcard.textContent){
+        setTimeout(() =>{
+            clickedcard.classList.remove("showcard");
+            grid.classList.remove("showcard");
+            clickedcard = ""
+        }, 500);
+    }
+}
+
+const gridSize = 4
+const gridContainer = document.getElementById('grid-container');
+gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+gridContainer.style.width = `${gridSize * 80 + (gridSize - 1) * 10}px`;
+
+for (let i = 1; i <= gridSize * gridSize; i++) {
+    const gridItem = document.createElement('div');
+    gridItem.className = 'grid-item';
+    gridItem.textContent =card[i-1];
+    gridContainer.appendChild(gridItem);
+}
+
+document.querySelectorAll('.grid-item').forEach(function (grid) {
+    grid.addEventListener('click', toggleGridSelection);
+});
+
+document.getElementById('button1').addEventListener('click', function(){
+    location.reload()
+})
+
+</script>
+</body>
+</html>
+
